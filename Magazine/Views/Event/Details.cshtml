@@ -1,0 +1,80 @@
+﻿@model Magazine.MOdel.EventFolder.EventDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EventDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.EventId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventId)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventDate)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.EventDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventDetails)
+        </dd>*@
+
+
+    </dl>
+
+    <p class="hi">
+        @Html.DisplayFor(model=>model.EventDetails)
+    </p>
+
+    <div class="col color1">
+        @if (Model.FileContent != null)
+        {
+            var base64 = Convert.ToBase64String(Model.FileContent); var imgsrc = String.Format("data:image/gif;base64,{0}", base64);<img src=@imgsrc , class="posting" />
+        }
+
+        else
+        {
+            <img src="" class="img-fluid" alt="" />
+        }
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.EventId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<style>
+    .posting{
+        width:900px;
+        height:500px;
+        border-radius:10px;
+        border:solid 1px black;
+    }
+    .hi{width:700px;
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size:large;
+    }
+</style>
